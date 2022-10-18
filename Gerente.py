@@ -1,5 +1,6 @@
 from Memoria import Memoria
 from Intermediador import Intermediador
+from paginaVirtual import paginaVirtual
 import time
 
 class Gerente:
@@ -7,20 +8,24 @@ class Gerente:
         self.entrada = entrada
         
     def ligaSO(self, memoriaVirtual, memoriaFisica):
+        self.paginas = []
+        for i in range(len(memoriaVirtual)):
+            self.paginas.append(paginaVirtual(0, False, False, False, i))
+            
         memoria = Memoria(memoriaVirtual, memoriaFisica)
         print("Memoria iniciada")
 
     def iniciaProcesso(self):
         self.intermedio_1 = Intermediador(1)
-        self.intermedio_2 = Intermediador(2)
-        self.intermedio_3 = Intermediador(3)
 
     def gerenciaProcessos(self):
-        self.intermedio_1.run(self.entrada)
-        time.sleep(1)
-        self.intermedio_2.run(self.entrada)
-        time.sleep(1)
-        self.intermedio_3.run(self.entrada)
+        self.intermedio_1.run(self.entrada, self.paginas)
+
+    def mostraPaginacao(self):
+        for i in range (len(self.paginas)):
+            print(f'PAGINA {self.paginas[i].getEnd_memoria()} - COUNTER: {self.paginas[i].getCounter()} - PRESENCA: {self.paginas[i].getPresenca()} - MODIFICADO: {self.paginas[i].getModificado()} - REFERENCIADO {self.paginas[i].getReferencia()}\n')
+        
+
         
         
         
