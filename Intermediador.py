@@ -3,11 +3,12 @@ import threading
 import time
 
 class Intermediador(Thread):
-    def __init__ (self, num, moderacao):
+    def __init__ (self, num, moderacao, memoria):
         Thread.__init__(self)
         self.lock = threading.Lock()
         self.num = num
         self.moderacao = moderacao
+        self.memoria = memoria
 
     def run(self):
         print(f'Intermediador #{self.num} iniciado.')
@@ -18,14 +19,17 @@ class Intermediador(Thread):
                     self.instrucao = self.moderacao.proximo(self.num).split("-")
                     #BLOCO DE USO DA MEMORIA
                     if self.instrucao[1] == "W":
-                        self.endereco = self.instrucao[0]
+                        self.endereco = int(self.instrucao[0])
                         self.tipo = self.instrucao[1]
                         self.valor = self.instrucao[2]
                         print(f'Intermediador #{self.num} recebeu a instrução {self.instrucao}. ENDERECO: {self.endereco} - TIPO: {self.tipo} - VALOR: {self.valor}')
+                        print("Trabalhando com a memoria.")
+                        self.memoria.operacaoEscrita(self.endereco, self.valor)
                     else:
-                        self.endereco = self.instrucao[0]
+                        self.endereco = int(self.instrucao[0])
                         self.tipo = self.instrucao[1]
                         print(f'Intermediador #{self.num} recebeu a instrução {self.instrucao}. ENDERECO: {self.endereco} - TIPO: {self.tipo}')
+                        self.memoria.operacaoLeitura(self.endereco)
                         
                     #FIM DO BLOCO DE USO DA MEMORIA
                     self.moderacao.controlaDistribuicao("Liberado")
