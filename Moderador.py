@@ -7,7 +7,7 @@ class Moderador:
         self.destino = solicitante
         self.instrucao = self.entrada[0]
         del(self.entrada[0])
-        print(f'Enviando instrução [ {self.instrucao} ] para o intermediador [ {self.destino} ]')
+        print(f'[MODERADOR] Enviando instrução [ {self.instrucao} ] para o intermediador [ {self.destino} ]')
         return self.instrucao
 
     def verificaOferta(self):

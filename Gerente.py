@@ -6,21 +6,21 @@ import time
 
 class Gerente:
     def __init__(self):
-        self.fabrica = FabricaEntradas(10)
+        self.fabrica = FabricaEntradas(30)
         
     def recebeEntrada(self):
         self.entrada = self.fabrica.getEntrada()
-        print("Entrada recebida!")
+        print("[GERENTE] Entrada recebida!")
         print(f'{self.entrada}')
 
     def ligaSO(self):
-        print("Iniciando SO")
-        print("Iniciando memória")
+        print("[GERENTE] Iniciando SO")
+        print("[GERENTE] Iniciando memória")
         self.memoria = Memoria()
         self.memoria.iniciaMemorias()
         #memoria.mostraPaginacao()
         time.sleep(2)
-        print("Memória iniciada")
+        print("[GERENTE] Memória iniciada")
 
     def iniciaProcessamento(self):
         moderacao = Moderador(self.entrada)
