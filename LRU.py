@@ -11,12 +11,12 @@ class LRU:
         #marcador de tempo é uma lista de "datetimes" que é espelho da memoria fisica, ele determina qual for a memoria mais antiga a ser acessada
         self.tempos = marcadoresTemporais
 
-        #Aqui é uma adaptação tecnia kkkk pra inicar um valor como o mais antigo, mas ainda não é o mais antigo de fato
+        #Aqui é uma adaptação tecnica kkkk pra inicar um valor como o mais antigo, mas ainda não é o mais antigo de fato
         self.maisAntigo = self.tempos[0]
 
         #Esse laço sim, determina qual o endereço mais antigo onde o valor novo substituirá o valor antigo
         for i in range(len(self.tempos)):
-            if self.maisAntigo > self.tempos[i]:
+            if self.maisAntigo >= self.tempos[i]:
                 self.indexer = i
 
         #Envia o valor antigo para o HD, nesse caso um arquvo txt

@@ -11,7 +11,7 @@ Esse é o halphOS - Um Sistema Operacional arquitetado em python usando o paradi
 # Luan Araujo       #
 # Anna Beatriz      #
 # Henrique Medeiros #
-# Hydelbranda Melo  #
+# Hydelbranda Melo  # <-> Foi de base
 #    5º P - UPE     #
 #####################
 '''
